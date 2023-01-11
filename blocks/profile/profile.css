@@ -1,6 +1,7 @@
 .profile {
-    width: 100%;
     max-width: 880px;
+    width: 100%;
+    width: calc(100% - 38px);
     margin: 40px auto 0;
     padding: 0;
     display: flex;
@@ -14,5 +15,4 @@
         flex-direction: column;
         margin-top: 42px;
     }
-    
 }
