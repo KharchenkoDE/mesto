@@ -5,6 +5,7 @@
     padding: 0 0 13px;
     font-size: 14px;
     line-height: 17px;
+    border-radius: 0;
 }
 
 .popup__input:first-child {
