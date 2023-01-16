@@ -1,4 +1,4 @@
-.profile-info {
+.profile__info {
     max-width: 880px;
     display: grid;
     grid-template-columns: 1fr 24px;
@@ -7,12 +7,12 @@
     gap: 16px 18px;
 }
 
-.profile-info:nth-child(2) {
+.profile__info:nth-child(2) {
     align-items: baseline;
 }
 
 @media screen and (max-width: 767px) {
-    .profile-info {
+    .profile__info {
         max-width: 282px;
         margin-top: 22.25px;
         gap: 14px 10px;

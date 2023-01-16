@@ -13,74 +13,74 @@
     <main class="main">
         <section class="profile">
             <img class="profile__avatar" src="./images/avatar__img.jpg" alt="Аватар">
-            <article class="profile-info">
-                <h1 class="profile-info__name">Жак-Ив Кусто</h1>
-                <button class="profile-info__edit-button"></button>
-                <p class="profile-info__profession">Исследователь океана</p>
-            </article>
-            <button class="profile__add-button"></button>
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__edit-button"></button>
+                <p class="profile__profession">Исследователь океана</p>
+            </div>
+            <button type="button" class="profile__add-button"></button>
         </section>
         <section class="elements">
             <ul class="elements__group">
-                <li class="elements__card">
-                    <img class="elements__image" src="./images/arhiz__new.jpg" alt="Архыз">
-                    <div class="elements__info">
-                        <h2 class="elements__title">Архыз</h2>
-                        <button class="elements__heart"></button>
+                <li class="card">
+                    <img class="card__image" src="./images/arhiz__new.jpg" alt="Архыз">
+                    <div class="card__info">
+                        <h2 class="card__title">Архыз</h2>
+                        <button type="button" class="card__heart"></button>
                     </div>
                 </li>
-                <li class="elements__card">
-                    <img class="elements__image" src="./images/bermamit__new.jpg" alt="Бермамыт">
-                    <div class="elements__info">
-                        <h2 class="elements__title">Бермамыт</h2>
-                        <button class="elements__heart"></button>
+                <li class="card">
+                    <img class="card__image" src="./images/bermamit__new.jpg" alt="Бермамыт">
+                    <div class="card__info">
+                        <h2 class="card__title">Бермамыт</h2>
+                        <button type="button" class="card__heart"></button>
                     </div>
                 </li>
-                <li class="elements__card">
-                    <img class="elements__image" src="./images/dombai__new.jpg" alt="Домбай">
-                    <div class="elements__info">
-                        <h2 class="elements__title">Домбай</h2>
-                        <button class="elements__heart"></button>
+                <li class="card">
+                    <img class="card__image" src="./images/dombai__new.jpg" alt="Домбай">
+                    <div class="card__info">
+                        <h2 class="card__title">Домбай</h2>
+                        <button type="button" class="card__heart"></button>
                     </div>
                 </li>
-                <li class="elements__card">
-                    <img class="elements__image" src="./images/elbrus__new.jpg" alt="Эльбрус">
-                    <div class="elements__info">
-                        <h2 class="elements__title">Эльбрус</h2>
-                        <button class="elements__heart"></button>
+                <li class="card">
+                    <img class="card__image" src="./images/elbrus__new.jpg" alt="Эльбрус">
+                    <div class="card__info">
+                        <h2 class="card__title">Эльбрус</h2>
+                        <button type="button" class="card__heart"></button>
                     </div>
                 </li>
-                <li class="elements__card">
-                    <img class="elements__image" src="./images/kar-cher__new.jpg" alt="Карачаево-Черкессия">
-                    <div class="elements__info">
-                        <h2 class="elements__title">Карачаево-Черкессия</h2>
-                        <button class="elements__heart"></button>
+                <li class="card">
+                    <img class="card__image" src="./images/kar-cher__new.jpg" alt="Карачаево-Черкессия">
+                    <div class="card__info">
+                        <h2 class="card__title">Карачаево-Черкессия</h2>
+                        <button type="button" class="card__heart"></button>
                     </div>
                 </li>
-                <li class="elements__card">
-                    <img class="elements__image" src="./images/tum-kel__new.jpg" alt="Туманлы-Кель">
-                    <div class="elements__info">
-                        <h2 class="elements__title">Туманлы-Кель</h2>
-                        <button class="elements__heart"></button>
+                <li class="card">
+                    <img class="card__image" src="./images/tum-kel__new.jpg" alt="Туманлы-Кель">
+                    <div class="card__info">
+                        <h2 class="card__title">Туманлы-Кель</h2>
+                        <button type="button" class="card.__heart"></button>
                     </div>
                 </li>
             </ul>
         </section>
-        <div class="popup">
-            <div class="popup__container">
-                <button class="popup__close"></button>
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form">
-                    <input required class="popup__input popup__input_name" type="text" placeholder="Ваше имя">
-                    <input required class="popup__input popup__input_profession" type="text" placeholder="Ваша профессия">
-                    <button class="popup__submit-button" type="submit">Сохранить</button>
-                </form>
-            </div>
-        </div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
+    <div class="popup">
+        <div class="popup__container">
+            <button type="button" class="popup__close"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form name="profile-form" class="popup__form">
+                <input name="profile-name" required class="popup__input popup__input_profile_name" type="text" placeholder="Ваше имя">
+                <input name="profile-profession" required class="popup__input popup__input_profile_profession" type="text" placeholder="Ваша профессия">
+                <button type="submit" class="popup__submit-button">Сохранить</button>
+            </form>
+        </div>
+    </div>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

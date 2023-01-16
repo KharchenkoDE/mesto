@@ -1,4 +1,4 @@
-.elements__heart {
+.card__heart {
     background-image: url(../../../images/heart__button.svg);
     background-repeat: no-repeat;
     border-style: none;
@@ -11,6 +11,6 @@
     cursor: pointer;
 }
 
-.elements__heart:hover {
+.card__heart:hover {
     opacity: 0.5;
 }
