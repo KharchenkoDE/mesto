@@ -1,11 +1,16 @@
-let editButton = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let closePopup = popup.querySelector('.popup__close');
-let popupForm = popup.querySelector('.popup__form');
-let profileName = document.querySelector('.profile__name');
-let profileProfession = document.querySelector('.profile__profession');
-let inputName = popupForm.querySelector('.popup__input_profile_name');
-let inputProfession = popupForm.querySelector('.popup__input_profile_profession');
+
+
+const editButton = document.querySelector('.profile__edit-button');
+
+const сardsButton = document.querySelector('.profile__add-button')
+
+const popup = document.querySelector('.popup');
+const closePopup = popup.querySelector('.popup__close');
+const popupForm = popup.querySelector('.popup__form');
+const profileName = document.querySelector('.profile__name');
+const profileProfession = document.querySelector('.profile__profession');
+const inputName = popupForm.querySelector('.popup__input_profile_name');
+const inputProfession = popupForm.querySelector('.popup__input_profile_profession');
 
 function openPopupForm() {
     
@@ -34,6 +39,10 @@ editButton.addEventListener('click', openPopupForm);
 closePopup.addEventListener('click', closePopupForm);
 
 popupForm.addEventListener('submit', handleFormSubmit);
+
+сardsButton.addEventListener('click', openPopupForm);
+
+
 
 
 
