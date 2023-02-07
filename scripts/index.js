@@ -36,8 +36,8 @@ const imageEnlarged = document.querySelector('.popup__image')
 const editProfileButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
 
-const submitAddCardForm = addCardPopup.querySelector('.popup_form_add');
-const submitProfileInfoForm = editProfilePopup.querySelector('.popup_form_edit')
+const submitAddCardForm = addCardPopup.querySelector('.popup__form_type_add');
+const submitProfileInfoForm = editProfilePopup.querySelector('.popup__form_type_edit')
 const addCardNameInput = addCardPopup.querySelector('.popup__input_add_name');
 const addCardImageInput = addCardPopup.querySelector('.popup__input_add_image');
 
