@@ -79,6 +79,7 @@ submitProfileInfoForm.addEventListener('submit', function(e) {
 });
 
 addCardButton.addEventListener('click', function() {
+    submitAddCardForm.reset();
     openPopup(addCardPopup);
 });
 
