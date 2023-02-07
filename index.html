@@ -21,83 +21,51 @@
             <button type="button" class="profile__add-button"></button>
         </section>
         <section class="elements">
-            <ul class="elements__group">
-                <li class="card">
-                    <img class="card__image" src="./images/arhiz__new.jpg" alt="Архыз">
-                    <div class="card__info">
-                        <h2 class="card__title">Архыз</h2>
-                        <button type="button" class="card__heart"></button>
-                    </div>
-                    <button class="card__basket" type="button"></button>
-                </li>
-                <li class="card">
-                    <img class="card__image" src="./images/bermamit__new.jpg" alt="Бермамыт">
-                    <div class="card__info">
-                        <h2 class="card__title">Бермамыт</h2>
-                        <button type="button" class="card__heart"></button>
-                    </div>
-                    <button class="card__basket" type="button"></button>
-                </li>
-                <li class="card">
-                    <img class="card__image" src="./images/dombai__new.jpg" alt="Домбай">
-                    <div class="card__info">
-                        <h2 class="card__title">Домбай</h2>
-                        <button type="button" class="card__heart"></button>
-                    </div>
-                    <button class="card__basket" type="button"></button>
-                </li>
-                <li class="card">
-                    <img class="card__image" src="./images/elbrus__new.jpg" alt="Эльбрус">
-                    <div class="card__info">
-                        <h2 class="card__title">Эльбрус</h2>
-                        <button type="button" class="card__heart"></button>
-                    </div>
-                    <button class="card__basket" type="button"></button>
-                </li>
-                <li class="card">
-                    <img class="card__image" src="./images/kar-cher__new.jpg" alt="Карачаево-Черкессия">
-                    <div class="card__info">
-                        <h2 class="card__title">Карачаево-Черкессия</h2>
-                        <button type="button" class="card__heart"></button>
-                    </div>
-                    <button class="card__basket" type="button"></button>
-                </li>
-                <li class="card">
-                    <img class="card__image" src="./images/tum-kel__new.jpg" alt="Туманлы-Кель">
-                    <div class="card__info">
-                        <h2 class="card__title">Туманлы-Кель</h2>
-                        <button type="button" class="card__heart"></button>
-                    </div>
-                    <button class="card__basket" type="button"></button>
-                </li>
-            </ul>
+            <ul class="elements__group"></ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
-        <div class="popup__container">
+    <div class="popup popup_type_edit">
+        <div class="popup__container popup__container_type_edit">
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form name="profile-form" class="popup__form">
+            <form name="profile-form" class="popup__form popup_form_edit">
                 <input name="profile-name" required class="popup__input popup__input_profile_name" type="text" placeholder="Ваше имя">
                 <input name="profile-profession" required class="popup__input popup__input_profile_profession" type="text" placeholder="Ваша профессия">
                 <button type="submit" class="popup__submit-button">Сохранить</button>
             </form>
         </div>
     </div>
-    <div class="popup">
-        <div class="popup__container">
+    <div class="popup popup_type_add">
+        <div class="popup__container popup__container_type_add">
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form name="" class="">
-                <input name="" required class="" type="" placeholder="">
-                <input name="" required class="" type="" placeholder="">
-                <button type="" class=""></button>
+            <form name="add-form" class="popup__form popup_form_add">
+                <input name="add-name" required class="popup__input popup__input_add_name" type="text" placeholder="Название">
+                <input name="add-image" required class="popup__input popup__input_add_image" type="text" placeholder="Ссылка на картинку">
+                <button type="submit" class="popup__submit-button">Создать</button>
             </form>
         </div>
     </div>
+    <div class="popup popup_type_image">
+        <div class="popup__container popup__container_type_image">
+            <button type="button" class="popup__close"></button>
+            <img class="popup__image" src="" alt="">
+            <p class="popup__caption"></p>
+        </div>
+    </div>
+    <template id="card-template">
+        <li class="card">
+            <img class="card__image" src="" alt="">
+            <div class="card__info">
+                <h2 class="card__title"></h2>
+                <button type="button" class="card__heart"></button>
+            </div>
+            <button class="card__basket" type="button"></button>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
