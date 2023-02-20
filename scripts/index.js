@@ -25,11 +25,20 @@ const cardsContainer = document.querySelector('.elements__group');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEscape);
 };
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened')
 };
+
+function closePopupEscape(evt) {
+    if(evt.key === 'Escape') {
+        closePopup(document.querySelector('.popup_opened'));
+    };
+};
+
+
 
 function createCard(name, link) {
     const newCard = cardTemplate.cloneNode(true).content;
