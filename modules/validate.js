@@ -1,4 +1,4 @@
-const config = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-button',
@@ -73,13 +73,13 @@ const disabledButtonSubmit = (popupElement, config) => {
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListeners('submit', function (e) {
-      e.preventDefault();
+    setEventListeners(formElement, config);
+    formElement.addEventListener('submit', function (e) {
     });
   });
 };
 
-enableValidation(config);
+enableValidation(validationConfig);
  
 
 
