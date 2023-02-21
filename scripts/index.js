@@ -26,19 +26,29 @@ const cardsContainer = document.querySelector('.elements__group');
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupEscape);
+    document.addEventListener('mousedown', closePopupClick);
 };
 
 function closePopup(popup) {
-    popup.classList.remove('popup_opened')
+    popup.classList.remove('popup_opened');
+    document.addEventListener('keydown', closePopupEscape);
+    document.addEventListener('mousedown', closePopupClick);
 };
 
-function closePopupEscape(evt) {
-    if(evt.key === 'Escape') {
+function closePopupEscape(e) {
+    if(e.key === 'Escape') {
         closePopup(document.querySelector('.popup_opened'));
     };
 };
 
-
+function closePopupClick(e) {
+    const popupVisible = document.querySelector('.popup_opened');
+    if(e.target === popupVisible) {
+        if(popupVisible) {
+            closePopup(popupVisible);
+        };
+    };
+};
 
 function createCard(name, link) {
     const newCard = cardTemplate.cloneNode(true).content;
@@ -52,7 +62,7 @@ function createCard(name, link) {
     cardImage.src = link;
     cardImage.alt = name;
 
-    cardImage.addEventListener('click', function() {
+    cardImage.addEventListener('click', function () {
         openPopup(imagePopup);
         imageTitle.textContent = name;
         imageEnlarged.src = link;
@@ -60,7 +70,7 @@ function createCard(name, link) {
 
     });
 
-    cardDeleteButton.addEventListener('click', function() {
+    cardDeleteButton.addEventListener('click', function () {
         cardRemove.remove();
     });
 
@@ -75,25 +85,25 @@ initialCards.forEach(card => {
     cardsContainer.append(createCard(card.name, card.link))
 })
 
-profileEditButton.addEventListener('click', function() {
+profileEditButton.addEventListener('click', function () {
     openPopup(profileEditPopup);
     nameInput.value = nameProfile.textContent; 
     professionInput.value = professionProfile.textContent;
 }); 
 
-profileSubmitInfoForm.addEventListener('submit', function(e) {
+profileSubmitInfoForm.addEventListener('submit', function (e) {
     e.preventDefault();
     nameProfile.textContent = nameInput.value;
     professionProfile.textContent = professionInput.value;
     closePopup(profileEditPopup);
 });
 
-cardAddButton.addEventListener('click', function() {
+cardAddButton.addEventListener('click', function () {
     cardSubmitAddForm.reset();
     openPopup(cardAddPopup);
 });
 
-cardSubmitAddForm.addEventListener('submit', function(e) {
+cardSubmitAddForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const cardAddName = cardAddNameInput.value;
     const cardAddImage = cardAddImageInput.value;
