@@ -83,12 +83,15 @@ function createCard(name, link) {
 
 initialCards.forEach(card => {
     cardsContainer.append(createCard(card.name, card.link))
-})
+});
 
 profileEditButton.addEventListener('click', function () {
-    openPopup(profileEditPopup);
     nameInput.value = nameProfile.textContent; 
     professionInput.value = professionProfile.textContent;
+    removeValidationErrors(profileEditPopup, validationConfig);
+    disabledButtonSubmit(profileEditPopup, validationConfig);
+    toggleButtonState(createInputList(profileSubmitInfoForm, validationConfig.inputSelector), profileSubmitInfoForm.querySelector(validationConfig.submitButtonSelector), validationConfig);
+    openPopup(profileEditPopup);
 }); 
 
 profileSubmitInfoForm.addEventListener('submit', function (e) {
@@ -101,6 +104,8 @@ profileSubmitInfoForm.addEventListener('submit', function (e) {
 cardAddButton.addEventListener('click', function () {
     cardSubmitAddForm.reset();
     openPopup(cardAddPopup);
+    removeValidationErrors(cardAddPopup, validationConfig);
+    disabledButtonSubmit(cardAddPopup, validationConfig);
 });
 
 cardSubmitAddForm.addEventListener('submit', function (e) {

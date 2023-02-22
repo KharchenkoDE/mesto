@@ -46,7 +46,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 };
 
 const setEventListeners = (formElement, config) => {
-  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const inputList = createInputList(formElement, config.inputSelector);
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(inputList, buttonElement, config);
   inputList.forEach((inputElement) => {
@@ -55,6 +55,10 @@ const setEventListeners = (formElement, config) => {
       toggleButtonState(inputList, buttonElement, config);
     });
   });
+};
+
+const createInputList = (form, inputSelector) => {
+  return Array.from(form.querySelectorAll(inputSelector));
 };
 
 const removeValidationErrors = (popupElement, config) => {

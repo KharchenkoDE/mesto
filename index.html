@@ -32,10 +32,14 @@
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="profile-form" class="popup__form popup__form_type_edit" novalidate>
-                <input name="profile-name" id="name-input" class="popup__input popup__input_profile_name" type="text" placeholder="Ваше имя" minlength="2" maxlength="40" required>
-                <span class="popup__input-error name-input-error"></span>
-                <input name="profile-profession" id="profession-input" class="popup__input popup__input_profile_profession" type="text" placeholder="Ваша профессия" minlength="2" maxlength="200" required>
-                <span class="popup__input-error profession-input-error"></span>
+                <!-- <label class="popup__input-label"> -->
+                    <input name="profile-name" id="name-input" class="popup__input popup__input_profile_name" type="text" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+                    <p class="popup__input-error name-input-error"></p>
+                <!-- </label> -->
+                <!-- <label class="popup__input-label"> -->
+                    <input name="profile-profession" id="profession-input" class="popup__input popup__input_profile_profession" type="text" placeholder="Ваша профессия" minlength="2" maxlength="200" required>
+                    <p class="popup__input-error profession-input-error"></p>
+                <!-- </label> -->
                 <button type="submit" class="popup__submit-button">Сохранить</button>
             </form> 
         </div>
@@ -45,10 +49,14 @@
             <button type="button" class="popup__close"></button>
             <h2 class="popup__title">Новое место</h2>
             <form name="add-form" class="popup__form popup__form_type_add" novalidate>
-                <input name="add-name" id="add-input" class="popup__input popup__input_add_name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
-                <span class="popup__input-error add-input-error"></span>
-                <input name="add-image" id="image-input" class="popup__input popup__input_add_image" type="text" placeholder="Ссылка на картинку" required>
-                <span class="popup__input-error image-input-error"></span>
+                <!-- <label class="popup__input-label"> -->
+                    <input name="add-name" id="add-input" class="popup__input popup__input_add_name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+                    <p class="popup__input-error add-input-error"></p>
+                <!-- </label> -->
+                <!-- <label class="popup__input-label"> -->
+                    <input name="add-image" id="image-input" type="url" class="popup__input popup__input_add_image" type="text" placeholder="Ссылка на картинку" required>
+                    <p class="popup__input-error image-input-error"></p>
+                <!-- </label> -->
                 <button type="submit" class="popup__submit-button">Создать</button>
             </form>
         </div>
