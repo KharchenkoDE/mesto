@@ -30,7 +30,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
+  return inputList.some((inputElement) => { 
     return !inputElement.validity.valid;
   });
 };
@@ -44,6 +44,10 @@ const toggleButtonState = (inputList, buttonElement, config) => {
     buttonElement.disabled = false;
   };
 };
+
+// функция disableButtonSubmit не использывалась и была написана по ошибке,
+// удалил её - теперь функция toggleButtonState - единое место
+// управления отображением кнопки сабмита.
 
 const setEventListeners = (formElement, config) => {
   const inputList = createInputList(formElement, config.inputSelector);
@@ -66,26 +70,14 @@ const removeValidationErrors = (popupElement, config) => {
   deleteValid.forEach(function (item) {
     hideInputError(popupElement, item, config);
   });
-}
-
-const disabledButtonSubmit = (popupElement, config) => {
-  const buttonElement = popupElement.querySelector(config.submitButtonSelector);
-  buttonElement.disabled = true;
-  buttonElement.classList.add(config.inactiveButtonClass);
 };
 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
-    formElement.addEventListener('submit', function (e) {
-    });
   });
 };
 
 enableValidation(validationConfig);
  
-
-
-
-

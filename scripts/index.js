@@ -31,8 +31,8 @@ function openPopup(popup) {
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    document.addEventListener('keydown', closePopupEscape);
-    document.addEventListener('mousedown', closePopupClick);
+    document.removeEventListener('keydown', closePopupEscape);
+    document.removeEventListener('mousedown', closePopupClick);
 };
 
 function closePopupEscape(e) {
@@ -89,7 +89,6 @@ profileEditButton.addEventListener('click', function () {
     nameInput.value = nameProfile.textContent; 
     professionInput.value = professionProfile.textContent;
     removeValidationErrors(profileEditPopup, validationConfig);
-    disabledButtonSubmit(profileEditPopup, validationConfig);
     toggleButtonState(createInputList(profileSubmitInfoForm, validationConfig.inputSelector), profileSubmitInfoForm.querySelector(validationConfig.submitButtonSelector), validationConfig);
     openPopup(profileEditPopup);
 }); 
