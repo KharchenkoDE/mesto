@@ -45,10 +45,6 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   };
 };
 
-// функция disableButtonSubmit не использывалась и была написана по ошибке,
-// удалил её - теперь функция toggleButtonState - единое место
-// управления отображением кнопки сабмита.
-
 const setEventListeners = (formElement, config) => {
   const inputList = createInputList(formElement, config.inputSelector);
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
