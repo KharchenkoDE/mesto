@@ -104,7 +104,6 @@ cardAddButton.addEventListener('click', function () {
     cardSubmitAddForm.reset();
     openPopup(cardAddPopup);
     removeValidationErrors(cardAddPopup, validationConfig);
-    disabledButtonSubmit(cardAddPopup, validationConfig);
 });
 
 cardSubmitAddForm.addEventListener('submit', function (e) {
