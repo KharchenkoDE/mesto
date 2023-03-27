@@ -1,9 +1,20 @@
+import { initialCards } from './initial-cards.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}; 
+
 const profileEditPopup = document.querySelector('.popup_type_edit');
 const cardAddPopup = document.querySelector('.popup_type_add');
 
 const imagePopup = document.querySelector('.popup_type_image');
-const imageTitle = document.querySelector('.popup__caption');
-const imageEnlarged = document.querySelector('.popup__image');
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
@@ -20,10 +31,23 @@ const professionProfile = document.querySelector('.profile__profession');
 const nameInput = profileEditPopup.querySelector('.popup__input_profile_name');
 const professionInput = profileEditPopup.querySelector('.popup__input_profile_profession');
 
-const cardTemplate = document.getElementById('card-template');
 const cardsContainer = document.querySelector('.elements__group'); 
 
-function openPopup(popup) {
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute('name');
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validationConfig);
+
+export function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupEscape);
     document.addEventListener('mousedown', closePopupClick);
@@ -41,76 +65,53 @@ function closePopupEscape(e) {
     };
 };
 
-function closePopupClick(e) {
+function closePopupClick(event) {
     const popupVisible = document.querySelector('.popup_opened');
-    if(e.target === popupVisible) {
+    if(event.target === popupVisible) {
         if(popupVisible) {
             closePopup(popupVisible);
         };
     };
 };
 
-function createCard(name, link) {
-    const newCard = cardTemplate.cloneNode(true).content;
-    const cardImage = newCard.querySelector('.card__image');
-    const cardTitle = newCard.querySelector('.card__title');
-    const cardRemove = newCard.querySelector('.card')
-    const cardDeleteButton = newCard.querySelector('.card__basket')
-    const cardLikeButton = newCard.querySelector('.card__heart')
-
-    cardTitle.textContent = name;
-    cardImage.src = link;
-    cardImage.alt = name;
-
-    cardImage.addEventListener('click', function () {
-        openPopup(imagePopup);
-        imageTitle.textContent = name;
-        imageEnlarged.src = link;
-        imageEnlarged.alt = name;
-
-    });
-
-    cardDeleteButton.addEventListener('click', function () {
-        cardRemove.remove();
-    });
-
-    cardLikeButton.addEventListener('click', function (e) {
-        e.target.classList.toggle('card__heart_active');
-    });
-
-    return newCard;
-};
-
-initialCards.forEach(card => {
-    cardsContainer.append(createCard(card.name, card.link))
+initialCards.forEach(cardData => {
+    const newCard = new Card(cardData, '.card-template', imagePopup);
+    renderCards(newCard.getCard());
 });
 
+function renderCards(card) {
+    cardsContainer.prepend(card);
+};
+
 profileEditButton.addEventListener('click', function () {
+    profileSubmitInfoForm.reset();
     nameInput.value = nameProfile.textContent; 
     professionInput.value = professionProfile.textContent;
-    removeValidationErrors(profileEditPopup, validationConfig);
-    toggleButtonState(createInputList(profileSubmitInfoForm, validationConfig.inputSelector), profileSubmitInfoForm.querySelector(validationConfig.submitButtonSelector), validationConfig);
     openPopup(profileEditPopup);
 }); 
 
 profileSubmitInfoForm.addEventListener('submit', function (e) {
-    e.preventDefault();
     nameProfile.textContent = nameInput.value;
     professionProfile.textContent = professionInput.value;
+    nameInput.value = '';
+    professionInput.value = '';
     closePopup(profileEditPopup);
 });
 
 cardAddButton.addEventListener('click', function () {
     cardSubmitAddForm.reset();
+    formValidators['add-form'].disableSubmitButton();
+
     openPopup(cardAddPopup);
-    removeValidationErrors(cardAddPopup, validationConfig);
 });
 
 cardSubmitAddForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const cardAddName = cardAddNameInput.value;
-    const cardAddImage = cardAddImageInput.value;
-    cardsContainer.prepend(createCard(cardAddName, cardAddImage));
+    const newCardData = {
+        name: cardAddNameInput.value,
+        link: cardAddImageInput.value,
+    };
+    const card = new Card(newCardData, '.card-template', imagePopup);
+    renderCards(card.getCard());
     closePopup(cardAddPopup);
 });
 
