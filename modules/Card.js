@@ -1,21 +1,27 @@
-import { openPopup } from "./index.js";
+import { openPopup } from "../utils/utils.js";
 
 export class Card {
-    constructor(cardData, templateSelector, imagePopup) {
+    constructor(cardData, templateSelector, imagePopup, closePopupEscape, closePopupClick) {
         this._cardData = cardData;
-        this._card = document
-            .querySelector(templateSelector)
-            .content
-            .querySelector('.card')
-            .cloneNode(true);
+        this._card = this._getCardTemplate(templateSelector);
         this._cardLikeButton = this._card.querySelector('.card__heart');
         this._cardDeleteButton = this._card.querySelector('.card__basket');
         this._cardImage = this._card.querySelector('.card__image');
         this._cardTitle = this._card.querySelector('.card__title');
         this._cardElement = this._createCard();
         this._imagePopup = imagePopup;
+        this._closePopupEscape = closePopupEscape;
+        this._closePopupClick = closePopupClick;
         this._setEventListeners();
     };
+
+    _getCardTemplate(templateSelector) {
+        return document
+            .querySelector(templateSelector)
+            .content
+            .querySelector('.card')
+            .cloneNode(true);
+    }
     
     _createCard() {
         this._cardImage.src = this._cardData.link;
@@ -40,7 +46,7 @@ export class Card {
             imagePopupImg.src = this._cardData.link;
             imagePopupImg.alt = this._cardData.name;
             this._imagePopup.querySelector('.popup__caption').textContent = this._cardData.name;
-            openPopup(this._imagePopup);
+            openPopup(this._imagePopup, this._closePopupEscape, this._closePopupClick);
         });
     };
 

@@ -1,6 +1,7 @@
 import { initialCards } from './initial-cards.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import { openPopup } from "../utils/utils.js";
 
 const validationConfig = {
     formSelector: '.popup__form',
@@ -47,12 +48,6 @@ const enableValidation = (config) => {
 
 enableValidation(validationConfig);
 
-export function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupEscape);
-    document.addEventListener('mousedown', closePopupClick);
-};
-
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePopupEscape);
@@ -74,8 +69,12 @@ function closePopupClick(event) {
     };
 };
 
+function createCard(cardData) {
+    return new Card(cardData, '.card-template', imagePopup, closePopupEscape, closePopupClick);
+};
+
 initialCards.forEach(cardData => {
-    const newCard = new Card(cardData, '.card-template', imagePopup);
+    const newCard = createCard(cardData);
     renderCards(newCard.getCard());
 });
 
@@ -87,14 +86,13 @@ profileEditButton.addEventListener('click', function () {
     profileSubmitInfoForm.reset();
     nameInput.value = nameProfile.textContent; 
     professionInput.value = professionProfile.textContent;
-    openPopup(profileEditPopup);
+    openPopup(profileEditPopup, closePopupEscape, closePopupClick);
 }); 
 
 profileSubmitInfoForm.addEventListener('submit', function (e) {
     nameProfile.textContent = nameInput.value;
     professionProfile.textContent = professionInput.value;
-    nameInput.value = '';
-    professionInput.value = '';
+    profileSubmitInfoForm.reset();
     closePopup(profileEditPopup);
 });
 
@@ -102,7 +100,7 @@ cardAddButton.addEventListener('click', function () {
     cardSubmitAddForm.reset();
     formValidators['add-form'].disableSubmitButton();
 
-    openPopup(cardAddPopup);
+    openPopup(cardAddPopup, closePopupEscape, closePopupClick);
 });
 
 cardSubmitAddForm.addEventListener('submit', function (e) {
@@ -110,7 +108,7 @@ cardSubmitAddForm.addEventListener('submit', function (e) {
         name: cardAddNameInput.value,
         link: cardAddImageInput.value,
     };
-    const card = new Card(newCardData, '.card-template', imagePopup);
+    const card = createCard(newCardData);
     renderCards(card.getCard());
     closePopup(cardAddPopup);
 });
