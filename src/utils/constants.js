@@ -1,3 +1,22 @@
+export const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}; 
+
+export const cardSelectors = {
+  containerSelector: '.elements__group',
+  elementSelector: '.card-template'
+};
+
+export const userInfoSelectors = {
+userNameSelector: '.profile__name',
+userDataSelector: '.profile__profession'
+}; 
+
 export const initialCards = [
     {
       name: 'Архыз',
@@ -23,4 +42,4 @@ export const initialCards = [
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
+];
