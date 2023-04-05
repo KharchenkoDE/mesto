@@ -10,9 +10,6 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
-const profileEditPopup = document.querySelector('.popup_type_edit');
-const nameInput = profileEditPopup.querySelector('.popup__input_profile_name');
-const professionInput = profileEditPopup.querySelector('.popup__input_profile_profession');
 
 const userInfo = new UserInfo({
     nameSelector: userInfoSelectors.userNameSelector,
@@ -76,8 +73,10 @@ function createCard(cardData){
 profileEditButton.addEventListener('click', function () {
     formValidators['profile-form'].disableSubmitButton();
     const myUserInfo = userInfo.getUserInfo();
-    nameInput.value = myUserInfo.userName;
-    professionInput.value = myUserInfo.userData;
+    userInfoPopup.setInputValues({
+        userName: myUserInfo.userName,
+        userData: myUserInfo.userData
+    });
     userInfoPopup.open();
 }); 
 
