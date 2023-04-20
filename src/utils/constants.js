@@ -13,33 +13,14 @@ export const cardSelectors = {
 };
 
 export const userInfoSelectors = {
-userNameSelector: '.profile__name',
-userDataSelector: '.profile__profession'
-}; 
+  userNameSelector: '.profile__name',
+  userDataSelector: '.profile__profession'
+};
 
-export const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+export const popupSelectors = {
+  userInfoPopup: '.popup_type_edit',
+  // popupEditAvatar: '.popup_type_avatar-edit',
+  newCardPopup: '.popup_type_add',
+  popupImage: '.popup_type_image',
+  popupDeleteCard: '.popup_type_delete'
+}
