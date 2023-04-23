@@ -1,4 +1,4 @@
-class Api {
+export class Api {
     constructor(options) {
       this._url = options.baseUrl;
       this._headers = options.headers;
@@ -40,7 +40,7 @@ class Api {
       })
     }
   
-    getStartAppData() {
+    getAppData() {
       return Promise.all([this.getUresInfo(), this.getInitialCards()])
     }
   
@@ -86,11 +86,3 @@ class Api {
       })
     }
 }
-
-export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64/',
-  headers: {
-    authorization: '2e178716-522e-409b-aca6-9350655766ce',
-    'Content-Type': 'application/json'
-  }
-})

@@ -9,7 +9,7 @@ export class UserInfo {
       return {
         userName: this._nameElement.textContent,
         userData: this._dataElement.textContent,
-        // userAvatar: this._avatarElement.src
+        userAvatar: this._avatarElement.src
       }
     }
 
@@ -20,8 +20,8 @@ export class UserInfo {
       if(!!userData) {
         this._dataElement.textContent = userData;
       }
-      // if(!!userAvatar) {
-      //   this._avatarElement.src = userAvatar;
-      // }
+      if(!!userAvatar) {
+        this._avatarElement.src = userAvatar;
+      }
   }
 }

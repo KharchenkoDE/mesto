@@ -14,12 +14,13 @@ export const cardSelectors = {
 
 export const userInfoSelectors = {
   userNameSelector: '.profile__name',
-  userDataSelector: '.profile__profession'
+  userDataSelector: '.profile__profession',
+  userAvatarSelector: '.profile__avatar'
 };
 
 export const popupSelectors = {
   userInfoPopup: '.popup_type_edit',
-  // popupEditAvatar: '.popup_type_avatar-edit',
+  popupAvatarEdit: '.popup_type_avatar',
   newCardPopup: '.popup_type_add',
   popupImage: '.popup_type_image',
   popupDeleteCard: '.popup_type_delete'
