@@ -1,13 +1,12 @@
 import { Popup } from './Popup.js'
 
-import { validationConfig } from '../utils/constants.js';
-
 export class PopupWithForm extends Popup {
-    constructor({ popupSelector, submitFunction }) {
+    constructor({ popupSelector, submitFunction,validationConfig }) {
         super(popupSelector);
         this._submitFunction = submitFunction;
         this._inputList = this._popup.querySelectorAll(validationConfig.inputSelector);
         this._popupForm = this._popup.querySelector(validationConfig.formSelector);
+        this._activeButtoninfo = document.querySelector(`${popupSelector} ${validationConfig.submitButtonSelector}`);
     }
 
     _getInputValues() {
@@ -35,4 +34,12 @@ export class PopupWithForm extends Popup {
         });
         super.setEventListeners();
     }
+    
+    renderLoading(loading) {
+            if(loading) {
+                this._activeButtoninfo.textContent = 'Сохранение...';
+            } else {
+                this._activeButtoninfo.textContent = 'Сохранить';
+            }
+    };
 }

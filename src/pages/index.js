@@ -8,21 +8,12 @@ import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithSubmit } from '../components/PopupWithSubmit.js'
-import { Api } from '../components/Api.js';
+import { Api } from '../components/Api.js'
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const userAvatar = document.querySelector('.profile__avatar-edit');
 let userId = null;
-
-const infoLoading = (popupSelector, loading) => {
-    const activeButtoninfo = document.querySelector(`${popupSelector} .popup__submit-button`);
-    if(loading) {
-        activeButtoninfo.textContent = 'Сохранение...';
-    } else {
-        activeButtoninfo.textContent = 'Сохранить';
-    }
-};
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64/',
@@ -52,7 +43,7 @@ const popupImage = new PopupWithImage(popupSelectors.popupImage);
 const popupAvatar = new PopupWithForm({
     popupSelector: popupSelectors.popupAvatarEdit,
     submitFunction: (data) => {
-        infoLoading(popupSelectors.popupAvatarEdit, true);
+        popupAvatar.renderLoading(true);
         api.setAvatar(data.userAvatar)
         .then((data) => {
             userInfo.setUserInfo({
@@ -65,15 +56,15 @@ const popupAvatar = new PopupWithForm({
         .catch(err => 
             console.log(`Ошибка изменения аватара пользователя: ${err}`))
             .finally(() => {
-                infoLoading(popupSelectors.popupAvatarEdit, false)
+                popupAvatar.renderLoading(false);
             })
-    }
+    }, validationConfig
 });
 
 const userInfoPopup = new PopupWithForm({ 
     popupSelector: popupSelectors.userInfoPopup, 
     submitFunction: (data) => {
-        infoLoading(popupSelectors.userInfoPopup, true);
+        userInfoPopup.renderLoading(true);
         api.setUserInfo({
             name: data.userName,
             about: data.userData
@@ -89,15 +80,15 @@ const userInfoPopup = new PopupWithForm({
         .catch(err => 
             console.log(`Ошибка загрузки информации о пользователе: ${err}`))
             .finally(() => {
-                infoLoading(popupSelectors.userInfoPopup, false)
+                userInfoPopup.renderLoading(false);
             })
-    }
+    }, validationConfig
 });
 
 const newCardPopup = new PopupWithForm({ 
     popupSelector: popupSelectors.newCardPopup, 
     submitFunction: (data) => {
-        infoLoading(popupSelectors.newCardPopup, true);
+        newCardPopup.renderLoading(true);
         api.postNewCard({
             name: data['add-name'],
             link: data['add-image']
@@ -109,9 +100,9 @@ const newCardPopup = new PopupWithForm({
         .catch(err => 
             console.log(`Ошибка загрузки новой карточки: ${err}`))
             .finally(() => {
-                infoLoading(popupSelectors.newCardPopup, false)
+                newCardPopup.renderLoading(false);
             })
-} 
+}, validationConfig
 });
 
 const popupDeleteNewCard = new PopupWithSubmit(popupSelectors.popupDeleteCard) 
